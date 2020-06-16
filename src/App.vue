@@ -23,10 +23,11 @@ export default {
     };
   },
 
-  mounted() {
-      fetch("https://quote-garden.herokuapp.com/api/v2/quotes/random")
+   mounted() {
+      fetch("https://quote-garden.herokuapp.com/api/v2/quotes/")
         .then(res => res.json())
-        .then(json => this.beers = json)
+        .then(data => this.jokes = data.quotes)
+        .catch(error => console.log(error))
   },
 }
 </script>

@@ -1,6 +1,7 @@
 <template lang="html">
   <div>
-    <p>{{ joke.quote }}</p>
+    <p>{{ joke.quoteText }}</p>
+    <p>{{ joke.quoteAuthor }}</p>
   </div>
 </template>
 
