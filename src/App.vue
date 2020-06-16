@@ -1,28 +1,36 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="list-info" v-if="jokes.length">
+      <joke-list :jokes="jokes"></joke-list>
+    </div>
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import JokeList from "@/components/JokeList";
 
 export default {
-  name: 'App',
+  name: "app",
   components: {
-    HelloWorld
-  }
+    "joke-list": JokeList,
+  },
+  
+
+  data() {
+    return {
+      jokes: [],
+      selectedJoke: null
+    };
+  },
+
+  mounted() {
+      fetch("https://quote-garden.herokuapp.com/api/v2/quotes/random")
+        .then(res => res.json())
+        .then(json => this.beers = json)
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css" scoped>
+
 </style>
